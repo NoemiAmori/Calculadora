@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 
 export default function App() {
   // Mapeamento de teclas
-  const buttons = ['LIMPAR', 'DEL', '%', '/', 7, 8, 9, "x", 4, 5, 6, '-', 1, 2, 3, '+', '+/-', 0, '.', '=']
+  const buttons = ['LIMPAR', 'DEL', '%', '/', 7, 8, 9, "x", 4, 5, 6, '-', 1, 2, 3, '+', 0, '.', '+/-', '=']
 
   const [currentNumber, setCurrentNumber] = useState("")
   const [lastNumber, setLastNumber] = useState("")
@@ -40,7 +40,7 @@ export default function App() {
 
   function handleInput(buttonPressed) {
     console.log(buttonPressed) // Mostra no Console a tecla pressionada
-    if (buttonPressed === '+' | buttonPressed === "-" | buttonPressed === "x" | buttonPressed === "/" ) {
+    if (buttonPressed === '+' | buttonPressed === "-" | buttonPressed === "x" | buttonPressed === "/") {
       setCurrentNumber(currentNumber + " " + buttonPressed + " ")
       return
     }
@@ -83,10 +83,12 @@ export default function App() {
             <TouchableOpacity onPress={() => handleInput(button)} key={button} style={[styles.button, { backgroundColor: '#321c6c' }]}>
               <Text style={[styles.textButton, { color: "white", fontSize: 30 }]}>{button}</Text>
             </TouchableOpacity>
+
             : // Mapeamento dos outros botões
-            <TouchableOpacity onPress={() => handleInput(button)} key={button} style={styles.button}>
-              <Text style={[styles.textButton, { color: typeof (button) === 'number' ? 'black' : '#0093a6' }]}>{button}</Text>
-            </TouchableOpacity>
+              <TouchableOpacity onPress={() => handleInput(button)} key={button} style={styles.button}>
+                <Text style={[styles.textButton, { color: typeof (button) === 'number' ? 'white' : '#5b5b5b' }]}>{button}</Text>
+              </TouchableOpacity>
+            
         )}
       </View>
     </View>
