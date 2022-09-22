@@ -8,6 +8,7 @@ export default function App() {
 
   const [currentNumber, setCurrentNumber] = useState("")
   const [lastNumber, setLastNumber] = useState("")
+  const [result, setResult] = useState("")
 
 
   function calculator() {
@@ -30,9 +31,6 @@ export default function App() {
         return
       case '/':
         setCurrentNumber((fistNumber / lastNumber).toString())
-        return
-      case '%':
-        setCurrentNumber((fistNumber / 100).toString())
         return
 
     }
@@ -59,7 +57,9 @@ export default function App() {
       case '+/-'://Torna o valor positivo em negativo e vice-versa
         setCurrentNumber((-1 * currentNumber).toString())
         return
-
+      case '%':
+        setCurrentNumber((currentNumber / 100).toString())
+        return
     }
 
     setCurrentNumber(currentNumber + buttonPressed)
@@ -85,10 +85,10 @@ export default function App() {
             </TouchableOpacity>
 
             : // Mapeamento dos outros botões
-              <TouchableOpacity onPress={() => handleInput(button)} key={button} style={styles.button}>
-                <Text style={[styles.textButton, { color: typeof (button) === 'number' ? 'white' : '#5b5b5b' }]}>{button}</Text>
-              </TouchableOpacity>
-            
+            <TouchableOpacity onPress={() => handleInput(button)} key={button} style={styles.button}>
+              <Text style={[styles.textButton, { color: typeof (button) === 'number' ? 'white' : '#5b5b5b' }]}>{button}</Text>
+            </TouchableOpacity>
+
         )}
       </View>
     </View>
