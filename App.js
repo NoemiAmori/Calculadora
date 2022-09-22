@@ -14,6 +14,7 @@ export default function App() {
     const splitNumbers = currentNumber.split(' ')
     const fistNumber = parseFloat(splitNumbers[0])
     const lastNumber = parseFloat(splitNumbers[2])
+    const result = parseFloat(splitNumbers[3])
     const operator = splitNumbers[1]
 
     // Faz ação referente tecla pressionada
@@ -30,13 +31,16 @@ export default function App() {
       case '/':
         setCurrentNumber((fistNumber / lastNumber).toString())
         return
-      
+      case '%':
+        setCurrentNumber((fistNumber / 100).toString())
+        return
+
     }
   }
 
   function handleInput(buttonPressed) {
     console.log(buttonPressed) // Mostra no Console a tecla pressionada
-    if (buttonPressed === '+' | buttonPressed === "-" | buttonPressed === "x" | buttonPressed === "/") {
+    if (buttonPressed === '+' | buttonPressed === "-" | buttonPressed === "x" | buttonPressed === "/" ) {
       setCurrentNumber(currentNumber + " " + buttonPressed + " ")
       return
     }
@@ -52,7 +56,7 @@ export default function App() {
         setLastNumber(currentNumber + " = ")
         calculator()
         return
-      case '+/-':
+      case '+/-'://Torna o valor positivo em negativo e vice-versa
         setCurrentNumber((-1 * currentNumber).toString())
         return
 
