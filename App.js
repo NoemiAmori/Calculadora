@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   button: {
-    backgroundColor: 'white',
+    backgroundColor: '#462b8c',
     alignItems: 'center',
     justifyContent: 'center',
     minWidth: 90,
